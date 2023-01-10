@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
+import useFetch from "./useFetch.hook";
 import Item from "./Item";
 
 export default function Shop() {
   const [items, setItems] = useState([]);
-  const [loader, setLoader] = useState(true);
+  const { get, loader } = useFetch();
 
   const fetchItems = async () => {
     try {
-      const res = await fetch(
-        "https://learn.guidedao.xyz/api/student/products"
-      );
-      const data = await res.json();
+      const data = await get("https://learn.guidedao.xyz/api/student/products");
       setItems(data);
-    } finally {
-      setLoader(false);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -25,17 +23,15 @@ export default function Shop() {
 
   return (
     <div className="w-1/2 ml-10 mt-10">
-      {loader ? (
-        "Loading..."
-      ) : (
-        <ul>
-          {items[0][0].map((item) => (
-            <li key={item.id}>
-              <Item info={item} />
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {loader
+          ? "Loading"
+          : items.flat(2).map((item) => (
+              <li key={item.id}>
+                <Item info={item} />
+              </li>
+            ))}
+      </ul>
     </div>
   );
 }

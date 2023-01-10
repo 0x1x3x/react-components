@@ -1,8 +1,7 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
 export default function useMapbox() {
-  useEffect(() => {});
   const [marker, setMarker] = useState();
 
   mapboxgl.accessToken =

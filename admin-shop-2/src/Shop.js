@@ -3,11 +3,10 @@ import Item from "./Item";
 
 export default function Shop() {
   const [items, setItems] = useState([]);
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   const fetchItems = async () => {
     try {
-      setLoader(true);
       const res = await fetch(
         "https://learn.guidedao.xyz/api/student/products"
       );
@@ -30,7 +29,7 @@ export default function Shop() {
         "Loading..."
       ) : (
         <ul>
-          {items[0].map((item) => (
+          {items[0][0].map((item) => (
             <li key={item.id}>
               <Item info={item} />
             </li>

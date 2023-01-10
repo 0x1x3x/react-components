@@ -30,7 +30,7 @@ export default function Shop() {
         "Loading..."
       ) : (
         <ul>
-          {items.flat(2).map((item) => (
+          {items[0].map((item) => (
             <li key={item.id}>
               <Item info={item} />
             </li>

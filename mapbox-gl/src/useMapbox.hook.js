@@ -1,9 +1,7 @@
-import { useState, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
-export default function useMapbox() {
-  const [marker, setMarker] = useState();
-
+export default function useMapbox(options = {}) {
   mapboxgl.accessToken =
     "pk.eyJ1Ijoib3RyaWNhbGEiLCJhIjoiY2tqMjFjcTNzMnp2djJ1bW05NW9zd2h6NCJ9.0w535oE4G9JjDpDxC_vVuw";
 
@@ -13,12 +11,7 @@ export default function useMapbox() {
       style: "mapbox://styles/mapbox/dark-v10",
       center: [-73.990593, 40.740121],
       zoom: 12,
+      ...options,
     });
-
-    const marker = new mapboxgl.Marker()
-      .setLngLat([-73.990593, 40.740121])
-      .addTo(map);
-
-    setMarker(marker);
   }, []);
 }

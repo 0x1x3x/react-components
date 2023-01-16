@@ -39,7 +39,7 @@ export default function Shop() {
     }
   });
 
-  function handleFormSubmit(event) {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
     if (!name) {
@@ -61,19 +61,19 @@ export default function Shop() {
     setDesc("");
     setValid("");
     saveGoods(item);
-  }
+  };
 
-  function handleNameChange(event) {
+  const handleNameChange = (event) => {
     setName(event.target.value);
-  }
+  };
 
-  function handleDescChange(event) {
+  const handleDescChange = (event) => {
     setDesc(event.target.value);
-  }
+  };
 
-  function handleDeleteClick(id) {
+  const handleDeleteClick = (id) => {
     setItems(items.filter((item) => item.id !== id));
-  }
+  };
 
   return (
     <>

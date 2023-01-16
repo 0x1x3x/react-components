@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { render } from "react-dom";
 import "./index.css";
-import useMapbox from "./useMapbox.hook";
+import { useMapbox } from "./useMapbox.hook";
 
 function App() {
   const [random, setRandom] = useState(Math.random());
 
-  useMapbox({
-    container: "map",
-    center: [-73.990593, 40.740121],
-    zoom: 12,
-  });
+  useMapbox({});
 
   return (
     <>

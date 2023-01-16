@@ -5,15 +5,15 @@ export default function Item(props) {
 
   const { info } = props;
 
-  function handleAddClick() {
+  const handleAddClick = () => {
     setTotal(total + 1);
-  }
+  };
 
-  function handleRemoveClick() {
+  const handleRemoveClick = () => {
     if (total > 0) {
       setTotal(total - 1);
     }
-  }
+  };
 
   if (!info) {
     return null;

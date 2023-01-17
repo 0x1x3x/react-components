@@ -6,17 +6,14 @@ import { useMapbox } from "./useMapbox.hook";
 function App() {
   const [random, setRandom] = useState(Math.random());
 
-  useMapbox({});
+  useMapbox({
+    container: "map",
+    center: [37.61192, 55.76199],
+    zoom: 10,
+  });
 
   return (
     <>
-      <button
-        id="rerender"
-        className="cursor-pointer bg-[#0000ff] text-white py-3.5 px-5 min-w-150 border border-[#0000ff] rounded shadow disabled:opacity-25active:translate-y-0.5 hover:bg-blue-700"
-        onClick={() => setRandom(Math.random())}
-      >
-        Ререндер!
-      </button>
       <div className="min-h-full" id="map"></div>
     </>
   );

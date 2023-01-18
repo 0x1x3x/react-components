@@ -6,18 +6,18 @@ export default function Shop() {
   const [items, setItems] = useState([]);
   const { get, loader } = useFetch();
 
-  const fetchItems = async () => {
-    try {
-      const data = await get("https://learn.guidedao.xyz/api/student/products");
-      setItems(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    fetchItems();
-  }, []);
+    (async () => {
+      try {
+        const data = await get(
+          "https://learn.guidedao.xyz/api/student/products"
+        );
+        setItems(data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [get]);
 
   console.log(items[0]);
 

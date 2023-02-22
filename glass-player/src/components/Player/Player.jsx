@@ -68,7 +68,7 @@ const Player = () => {
     } else {
       setCurrentTrack(tracks[index + 1]);
     }
-    audioPlayer.current.currentTime = 0;
+    setIsPlaying(!isPlaying);
   };
 
   const prevTrack = () => {
@@ -78,7 +78,7 @@ const Player = () => {
     } else {
       setCurrentTrack(tracks[index - 1]);
     }
-    audioPlayer.current.currentTime = 0;
+    setIsPlaying(!isPlaying);
   };
 
   //progress bar
@@ -121,12 +121,8 @@ const Player = () => {
           <button class="btn">
             <FaBackward class="text-[#575857]" onClick={prevTrack} />
           </button>
-          <button class="play">
-            {!isPlaying ? (
-              <FaPlay onClick={togglePlayPause} />
-            ) : (
-              <FaPause onClick={togglePlayPause} />
-            )}
+          <button class="play" onClick={togglePlayPause}>
+            {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
           <button class="btn">
             <FaForward class="text-[#575857]" onClick={nextTrack} />
